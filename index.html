@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Anniversary!</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+  <!-- Background Music -->
+  <audio id="background-music" loop>
+    <source src="Dil Deewana Video Song _ Maine Pyar Kiya _ Salman Khan, Bhagyashree _ Lata Mangeshkar _Romantic Song_2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="container">
+    <main>
+      <h1>🎉 Happy Anniversary Mom & Dad! 🎉</h1>
+
+      <!-- Slideshow Section -->
+      <div class="slideshow" id="slideshow">
+        <img src="img/1.jpg" alt="Slide 1" class="active" />
+        <img src="img/2.jpg" alt="Slide 2" />
+        <img src="img/3.jpg" alt="Slide 3" />
+        <img src="img/4.jpg" alt="Slide 4" />
+        <img src="img/5.jpg" alt="Slide 5" />
+        <img src="img/6.jpg" alt="Slide 6" />
+        <img src="img/7.jpg" alt="Slide 7" />
+        <img src="img/8.jpg" alt="Slide 8" />
+        <img src="img/9.jpg" alt="Slide 9" />
+        <img src="img/10.jpg" alt="Slide 10" />
+      </div>
+
+      <p class="message">
+        Wishing you both endless love and happiness on your special day.
+        Your love story inspires me every day. Love you both!
+      </p>
+      <p class="ending">Here’s to many more years together! ❤️</p>
+
+      <button id="play-button">Play Music</button>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Confetti
+      setInterval(() => {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+      }, 3000);
+
+      // Play Music
+      const playButton = document.getElementById('play-button');
+      const audio = document.getElementById('background-music');
+      playButton.addEventListener('click', () => {
+        audio.play()
+          .then(() => console.log("Music is playing!"))
+          .catch(err => console.error("Playback failed:", err));
+      });
+
+      // Slideshow
+      const slides = document.querySelectorAll("#slideshow img");
+      let current = 0;
+
+      setInterval(() => {
+        slides[current].classList.remove("active");
+        current = (current + 1) % slides.length;
+        slides[current].classList.add("active");
+      }, 2500);
+    });
+  </script>
+</body>
+
+</html>
